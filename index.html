@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Language Translator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+         .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #outputText {
+      margin-top: 15px;
+      background-color: #ecf0f1;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>My Translation Tool</h1>
+
+    <label>From:</label>
+    <select id="sourceLang">
+      <option value="en">English</option>
+      <option value="ur">Urdu</option>
+    </select>
+
+    <label>To:</label>
+    <select id="targetLang">
+      <option value="ur">Urdu</option>
+      <option value="en">English</option>
+    </select>
+
+    <br><br>
+
+    <textarea id="inputText" rows="4" cols="40" placeholder="Type text here..."></textarea>
+    <br><br>
+
+    <button id="translateBtn">Translate</button>
+
+    <br><br>
+
+    <div id="outputText" style="border: 1px solid black; padding: 10px; width: 300px; min-height: 50px;">
+      Translation will appear here...
+    </div>
+
+    <script>
+      document.getElementById("translateBtn").addEventListener("click", function() {
+        var text = document.getElementById("inputText").value;
+        var from = document.getElementById("sourceLang").value;
+        var to = document.getElementById("targetLang").value;
+        var url = "https://api.mymemory.translated.net/get?q=" + encodeURIComponent(text) + "&langpair=" + from + "|" + to;
+
+        fetch(url)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(data) {
+            var translated = data.responseData.translatedText;
+            document.getElementById("outputText").textContent = translated;
+          });
+      });
+    </script>
+
+  </div>
+
+</body>
+</html>
