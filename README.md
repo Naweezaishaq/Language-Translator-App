@@ -1,6 +1,6 @@
-# CodeAlpha Language Translator
+# Language Translator
 
-A simple web-based Language Translation Tool built during my AI Internship at CodeAlpha.
+A simple web-based Language Translation Tool built as a personal project to practice HTML, CSS, JavaScript, and API integration.
 
 ## What it does
 
@@ -32,9 +32,5 @@ This tool allows users to:
 ## Screenshot
 
 <img width="1917" height="958" alt="image" src="https://github.com/user-attachments/assets/9ec79c8a-b870-4847-8cb4-13babaa25530" />
-
-
 ---
-
-**Internship:** CodeAlpha (AI Domain)
-**Task:** Language Translation Tool
+Built by Naweeza Ishaq
